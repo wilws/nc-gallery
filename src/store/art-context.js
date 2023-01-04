@@ -5,8 +5,11 @@ const ArtContext = React.createContext({
   currentArtWorkIndex: null,
   nextArtWorkIndex: null,
   previousArtWorkIndex: null,
+  nextUrl: null,
   moveForward: () => {},
   moveBackward: () => {},
+  fetchData: () => {},
+  isFetching: null
 });
 
 export default ArtContext;

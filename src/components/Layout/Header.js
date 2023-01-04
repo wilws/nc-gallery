@@ -7,10 +7,13 @@ const Header = () => {
 
     const artCtx = useContext(ArtContext);
     const [ backWardBtnActive, setBackwardBtnActive] = useState(false);
-    const [ forWardBtnActive, setForwardBtnActive] = useState(true);
+    // const [ forWardBtnActive, setForwardBtnActive] = useState(true);
 
     function moveForward(){
         artCtx.moveForward();
+        if (artCtx.currentArtWorkIndex >= artCtx.artworks.length-1){
+            artCtx.fetchData();
+        };
     };
 
     function moveBackward(){
@@ -25,11 +28,11 @@ const Header = () => {
         setBackwardBtnActive(true);
       }
 
-      if (artCtx.currentArtWorkIndex >= artCtx.artworks.length - 1) {
-        setForwardBtnActive(false);
-      } else {
-        setForwardBtnActive(true);
-      }
+    //   if (artCtx.currentArtWorkIndex >= artCtx.artworks.length - 1) {
+    //     setForwardBtnActive(false);
+    //   } else {
+    //     setForwardBtnActive(true);
+    //   }
     }, [artCtx.currentArtWorkIndex, artCtx.artworks.length]);
 
     return (
@@ -44,7 +47,8 @@ const Header = () => {
           <CustomButton
             func={moveForward}
             title="next"
-            active={forWardBtnActive}
+            // active={forWardBtnActive}
+            active={true}
           />
         </div>
       </div>

@@ -8,18 +8,14 @@ const ArtFrame = () => {
     const artCtx = useContext(ArtContext);
     let index = 0;
 
-        //   console.log(
-        //     artCtx.currentArtWorkIndex,
-        //     artCtx.nextArtWorkIndex,
-        //     artCtx.previousArtWorkIndex
-        //   );
-
-    
+    if (artCtx.isFetching) {
+       <h1>Fetch Data</h1>
+    }
 
     return (
       <div className="arts_frame">
         {artCtx.artworks.map((artwork) => { 
-          return <ArtContainer {...artwork} key={artwork.id} index={index++} />;
+          return <ArtContainer {...artwork} key={`artwork.id${index}`} index={index++} />;
         })}
       </div>
     );
