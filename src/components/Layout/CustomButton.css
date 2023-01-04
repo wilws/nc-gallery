@@ -1,0 +1,21 @@
+.button {
+    border:gray solid thin;
+    width:6rem;
+    height:1.5rem;
+    border-radius: 8px;
+    background-color: white;
+    cursor: pointer;
+    transition: border .2s, font-weight .2s;
+}
+
+.button.inactive{
+    cursor: not-allowed;
+    pointer-events: none;
+    color:rgb(212, 212, 212);
+    border:rgb(182, 182, 182) solid thin;
+}
+
+.button:hover{
+    border: black solid 1.5px;
+    font-weight:bold;
+}

@@ -1,16 +1,49 @@
-.arts_container {
+.arts_frame {
     position: relative;
     width:100%;
-    height:95%;
+    height:100%;
     background-color: black;
+    perspective: 100rem;
+    overflow: hidden;
+    /* white-space: nowrap; */
+
 }
 
+
+
 .arts_artwork {
-    position: relative;
+    position: absolute;
     width:100%;
     height:100%;
     overflow-y: hidden;
     background-color: black;
+    transform-style: preserve-3d;
+    transform-origin: right;
+    z-index: 5;
+    transition: transform 3s
+}
+
+.axisR{
+    transform-origin: right;
+}
+
+
+.axisL{
+    transform-origin: left;
+}
+
+
+
+.arts_artwork.flip-L{
+    transform-origin: left;
+    transform:rotateY(180deg);
+    z-index: 2;
+}
+
+.arts_artwork.flip-R{
+    transform-origin: right;
+    transform:rotateY(-180deg);
+     z-index: 2;
 }
 
 .arts_artwork .arts_display {
@@ -20,7 +53,7 @@
     perspective: 800px;
     transform-style: preserve-3d;
     overflow: hidden;
-   border: solid thick black;
+   border: solid thin black;
 
 }
 
@@ -31,7 +64,7 @@
     object-fit: cover;
     transform: translateZ(400px);
     transform-style: preserve-3d;
-    animation: movingIn 60s 0s forwards;
+    animation: movingIn 60s 0s infinite;
 }
 
 @keyframes movingIn {

@@ -1,28 +1,28 @@
 import './Arts.css';
 import ArtContainer from './ArtContainer.js/ArtContainer';
-import { useState, useEffect } from "react";
+import { useContext } from "react";
+import ArtContext from '../../store/art-context';
 
 const ArtFrame = () => {
 
-    const [artworks, setArtWorks] = useState([]);
+    const artCtx = useContext(ArtContext);
+    let index = 0;
 
-    useEffect(() => {
-      fetch("https://api.artic.edu/api/v1/artworks")
-        .then((data) => {
-          return data.json();
-        })
-        .then((artworks) => {
-          setArtWorks(artworks.data);
-        });
-    });
+        //   console.log(
+        //     artCtx.currentArtWorkIndex,
+        //     artCtx.nextArtWorkIndex,
+        //     artCtx.previousArtWorkIndex
+        //   );
+
     
+
     return (
-    <div className='arts_container'>
-        {artworks.map((artwork) => {
-            return <ArtContainer  key={artwork.id} {...artwork} />;
+      <div className="arts_frame">
+        {artCtx.artworks.map((artwork) => { 
+          return <ArtContainer {...artwork} key={artwork.id} index={index++} />;
         })}
-    </div>
-    )
+      </div>
+    );
 }
 
 export default ArtFrame;
